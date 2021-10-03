@@ -1,0 +1,109 @@
+## Java
+
+*.class
+*.war
+*.ear
+hs_err_pid*
+
+## Robovm
+/ios/robovm-build/
+
+## GWT
+/html/war/
+/html/gwt-unitCache/
+.apt_generated/
+.gwt/
+gwt-unitCache/
+www-test/
+.gwt-tmp/
+
+## Eclipse
+
+.classpath
+.project
+.metadata/
+/android/bin/
+/core/bin/
+/desktop/bin/
+/html/bin/
+/ios/bin/
+*.tmp
+*.bak
+*.swp
+*~.nib
+.settings/
+.loadpath
+.externalToolBuilders/
+*.launch
+
+## NetBeans
+
+/nbproject/private/
+/android/nbproject/private/
+/core/nbproject/private/
+/desktop/nbproject/private/
+/html/nbproject/private/
+/ios/nbproject/private/
+
+nbactions.xml
+nb-configuration.xml
+
+## Gradle
+
+/local.bootOptions
+.gradle/
+gradle-app.setting
+
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+
+## OS Specific
+.DS_Store
+Thumbs.db
+
+## iOS
+/ios/xcode/*.xcodeproj/*
+!/ios/xcode/*.xcodeproj/xcshareddata
+!/ios/xcode/*.xcodeproj/project.pbxproj
+/ios/xcode/native/
+/ios/IOSLauncher.app
+/ios/IOSLauncher.app.dSYM
+
+# Directories
+/**/log/
+/**/venv/
+/out/
+
+# Files.
+/result.png
+
+# Recusive Directories
+/**/__pycache__/
+/**/.gradle/
+/**/.idea/
+/**/build/
+/**/logs/
+/**/out/
+/**/run/
+
+# Test files.
+/test.bson
+/test.data
+/test.qdat
+
+# File types.
+*.qdat
+*.iml
+*.ipr
+*.log
+*.temp
+
+# Lombok config
+/preLoader/lombok.config
+lombok.config
+
+/core/lombok.config
+/desktop/lombok.config
+/local/
