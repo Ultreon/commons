@@ -1,6 +1,5 @@
 package com.ultreon.commons.crash;
 
-import org.apache.commons.lang.SystemUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import oshi.SystemInfo;
@@ -88,18 +87,7 @@ public final class CrashLog extends CrashCategory {
 
         CrashCategory category = new CrashCategory("System Details");
         category.add("OS", System.getProperty("os.name") + " " + System.getProperty("os.version"));
-//        category.add("CPU", hardwareAbstractionLayer.getProcessor().getProcessorIdentifier().getName());
-//        category.add("GPU", hardwareAbstractionLayer.getGraphicsCards().get(0).getName());
         category.add("Memory", runtime.totalMemory() - runtime.freeMemory() + "/" + runtime.totalMemory());
-
-//        // Todo: implement.
-//        category.add("Loaded Mod", ModManager.getInstance().getContainers().stream()
-//                .map(ModContainer::getModId)
-//                .collect(Collectors.joining(", ")));
-//        category.add("Constructed Mods", ModManager.getInstance().getContainers().stream()
-//                .filter((container) -> container.getJavaMod() != null)
-//                .map(ModContainer::getModId)
-//                .collect(Collectors.joining(", ")));
 
         crashLog.addCategory(category);
         return crashLog;
@@ -119,19 +107,6 @@ public final class CrashLog extends CrashCategory {
         SystemInfo systemInfo = new SystemInfo();
         HardwareAbstractionLayer hardwareAbstractionLayer = systemInfo.getHardware();
 
-//        List<AbstractMap.SimpleEntry<String, String>> entries = this.entries;
-//        entries.add(new AbstractMap.SimpleEntry<>("OS", System.getProperty("os.name")));
-//        entries.add(new AbstractMap.SimpleEntry<>("Processor", hardwareAbstractionLayer.getProcessor().getProcessorIdentifier().getName()));
-//        entries.add(new AbstractMap.SimpleEntry<>("GPU", hardwareAbstractionLayer.getGraphicsCards().get(0).getName()));
-//        entries.add(new AbstractMap.SimpleEntry<>("Memory", runtime.totalMemory() - runtime.freeMemory() + "/" + runtime.totalMemory()));
-//        entries.add(new AbstractMap.SimpleEntry<>("Loaded Mods", ModManager.getInstance().getContainers().stream()
-//                .map(ModContainer::getModId)
-//                .collect(Collectors.joining(", "))));
-//        entries.add(new AbstractMap.SimpleEntry<>("Constructed Mods", ModManager.getInstance().getContainers().stream()
-//                .filter((container) -> container.getJavaMod() != null)
-//                .map(ModContainer::getModId)
-//                .collect(Collectors.joining(", "))));
-
         if (entries.size() > 0) {
             sb.append("Details:").append(System.lineSeparator());
             for (AbstractMap.SimpleEntry<String, String> entry : entries) {
@@ -144,7 +119,7 @@ public final class CrashLog extends CrashCategory {
 
         for (CrashCategory category : categories) {
             cs.append(System.lineSeparator()).append("=------------------------------------------------------------------=");
-            cs.append(SystemUtils.LINE_SEPARATOR).append(category.toString());
+            cs.append(System.lineSeparator()).append(category.toString());
         }
 
         cs.append("=------------------------------------------------------------------=");

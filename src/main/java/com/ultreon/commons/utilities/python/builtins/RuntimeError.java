@@ -1,5 +1,6 @@
 package com.ultreon.commons.utilities.python.builtins;
 
+@Deprecated
 public class RuntimeError extends RuntimeException {
     public RuntimeError() {
     }
@@ -14,9 +15,5 @@ public class RuntimeError extends RuntimeException {
 
     public RuntimeError(Throwable cause) {
         super(cause);
-    }
-
-    public RuntimeError(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
     }
 }

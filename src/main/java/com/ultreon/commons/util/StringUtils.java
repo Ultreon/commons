@@ -177,20 +177,9 @@ public class StringUtils {
         result.addAttribute(TextAttribute.FONT, mainFont, 0, textLength);
 
         return result;
+    }
 
-//        boolean fallback = false;
-//        Integer fallbackBegin = null;
-//        for (int i = 0; i < text.length(); i++) {
-//            boolean curFallback = !mainFont.canDisplay(text.charAt(i));
-//            if (curFallback != fallback) {
-//                fallback = curFallback;
-//                if (fallback) {
-//                    fallbackBegin = i;
-//                } else {
-//                    result.addAttribute(TextAttribute.FONT, fallbackFont, fallbackBegin, i);
-//                }
-//            }
-//        }
-//        return result;
+    public static String join(List<String> strings, String s) {
+        return String.join(s, strings);
     }
 }

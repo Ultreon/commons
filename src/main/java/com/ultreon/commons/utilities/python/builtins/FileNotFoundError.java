@@ -1,5 +1,6 @@
 package com.ultreon.commons.utilities.python.builtins;
 
+@Deprecated
 public class FileNotFoundError extends RuntimeException {
     public FileNotFoundError() {
     }

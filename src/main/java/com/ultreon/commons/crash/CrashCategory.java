@@ -1,5 +1,6 @@
 package com.ultreon.commons.crash;
 
+import com.ultreon.commons.util.StringUtils;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
@@ -10,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.ultreon.commons.util.StringUtils.splitIntoLines;
-import static org.apache.commons.lang.StringUtils.join;
 
 public class CrashCategory {
     protected final List<AbstractMap.SimpleEntry<String, String>> entries = new ArrayList<>();
@@ -87,7 +87,7 @@ public class CrashCategory {
 
             String s = buffer.toString();
             List<String> strings = splitIntoLines(s);
-            String join = "   " + join(strings, System.lineSeparator() + "   ");
+            String join = "   " + StringUtils.join(strings, System.lineSeparator() + "   ");
 
             sb.append(join);
         }

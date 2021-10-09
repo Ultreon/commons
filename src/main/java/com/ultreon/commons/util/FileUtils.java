@@ -3,6 +3,7 @@ package com.ultreon.commons.util;
 import java.io.File;
 import java.io.PrintWriter;
 
+@SuppressWarnings("unused")
 public class FileUtils {
     @SuppressWarnings("UnusedReturnValue")
     public static boolean setCwd(File directory_name) {

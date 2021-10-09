@@ -3,6 +3,10 @@ package com.ultreon.commons.utilities.python.builtins;
 import java.math.BigDecimal;
 import java.math.MathContext;
 
+/**
+ * @deprecated replaced by {@link BigDecimal}
+ */
+@Deprecated
 public class Float extends BigDecimal {
     public Float(String val) {
         super(val);

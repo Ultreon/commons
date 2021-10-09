@@ -1,5 +1,6 @@
 package com.ultreon.commons.utilities.python.builtins;
 
+@Deprecated
 public class OSError extends RuntimeException {
     public OSError() {
     }
@@ -14,9 +15,5 @@ public class OSError extends RuntimeException {
 
     public OSError(Throwable cause) {
         super(cause);
-    }
-
-    public OSError(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
     }
 }

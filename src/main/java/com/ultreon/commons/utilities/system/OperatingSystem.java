@@ -1,7 +1,6 @@
 package com.ultreon.commons.utilities.system;
 
-@Deprecated
-public enum SystemEnum {
+public enum OperatingSystem {
     WINDOWS("Windows"),
     UNIX("Unix"),
     LINUX("Linux"),
@@ -23,11 +22,11 @@ public enum SystemEnum {
 
     private final String name;
 
-    SystemEnum(String name) {
+    OperatingSystem(String name) {
         this.name = name;
     }
 
-    public static SystemEnum getSystem() {
+    public static OperatingSystem getSystem() {
         String sunDesktop = System.getProperty("os.name");
         if (sunDesktop.toLowerCase().startsWith("windows")) {
             return WINDOWS;

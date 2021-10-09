@@ -4,10 +4,15 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
+@Deprecated
 public class OS {
     private final String name;
     private final String version;
 
+    /**
+     * @deprecated Use #getOS()
+     */
+    @Deprecated
     public OS() {
         this(System.getProperty("os.name"), System.getProperty("os.version"));
     }
@@ -20,6 +25,10 @@ public class OS {
     public OS(String name, String version) {
         this.name = name;
         this.version = version;
+    }
+
+    public static OS getOS() {
+        return new OS(System.getProperty("os.name"), System.getProperty("os.version"));
     }
 
     @Override

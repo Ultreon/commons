@@ -1,5 +1,9 @@
 package com.ultreon.commons.utilities.python.builtins;
 
+/**
+ * @deprecated use {@link ArithmeticException} instead (see javadoc)
+ */
+@Deprecated
 public class ZeroDivisionError extends RuntimeException {
     public ZeroDivisionError() {
     }

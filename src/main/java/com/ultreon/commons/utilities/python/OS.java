@@ -5,31 +5,26 @@ import lombok.experimental.UtilityClass;
 
 import java.io.IOException;
 
+@Deprecated
 @UtilityClass
 @SuppressWarnings("UnusedReturnValue")
 public final class OS {
+    @Deprecated
     public static String getSep() {
         return System.getProperty("file.separator");
     }
 
+    @Deprecated
     public static String getLogin() {
         return System.getProperty("user.name");
     }
 
+    @Deprecated
     public static User getUser() {
         return new User();
     }
 
-    public static boolean kill(long pid) {
-        ProcessHandle process = ProcessHandle.of(pid).orElseThrow();
-        return process.destroy();
-    }
-
-    public static long getPID() {
-        ProcessHandle process = ProcessHandle.current();
-        return process.pid();
-    }
-
+    @Deprecated
     public static int system(String cmd) {
         Process process;
         try {
@@ -49,18 +44,22 @@ public final class OS {
         return exitCode;
     }
 
+    @Deprecated
     public static long getTID() {
         return Thread.currentThread().getId();
     }
 
+    @Deprecated
     public static long getTID(Thread thread) {
         return thread.getId();
     }
 
+    @Deprecated
     public static boolean killThread() {
         return killThread(Thread.currentThread());
     }
 
+    @Deprecated
     public static boolean killThread(long tid) {
         for (Thread t : Thread.getAllStackTraces().keySet()) {
             if (t.getId() == tid) {
@@ -71,6 +70,7 @@ public final class OS {
         return false;
     }
 
+    @Deprecated
     public static boolean killThread(Thread thread) {
         thread.interrupt();
         return thread.isInterrupted();

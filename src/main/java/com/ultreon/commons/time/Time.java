@@ -75,24 +75,6 @@ public class Time implements Comparable<Time>, Serializable {
         if (lo.toSeconds() > hi.toSeconds()) throw new NullPointerException();
 
         return ((lo.toSeconds() <= toSeconds()) && (hi.toSeconds() >= toSeconds()));
-
-//        boolean flag1 = ((lo.hour <= hour) && (hi.hour >= hour));
-//        boolean flag2 = ((lo.minute <= minute) && (hi.minute >= minute));
-//        boolean flag3 = ((lo.second <= second) && (hi.second >= second));
-//
-//        if (flag1 && flag2 && flag3) {
-//            return true;
-//        }
-//
-//        if (flag1 && flag2) {
-//            return true;
-//        }
-//
-//        if (flag1) {
-//            return true;
-//        }
-//
-//        return false;
     }
 
     /**

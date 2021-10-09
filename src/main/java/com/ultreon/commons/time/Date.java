@@ -6,8 +6,8 @@ import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.chrono.Era;
 import java.time.chrono.IsoChronology;
-import java.time.chrono.IsoEra;
 import java.util.Objects;
 
 import static com.ultreon.commons.time.MeteorologicalSeason.*;
@@ -102,7 +102,7 @@ public class Date implements Serializable, Comparable<Date> {
         return localDate.getDayOfYear();
     }
 
-    public IsoEra getEra() {
+    public Era getEra() {
         LocalDate localDate = getLocalDate();
         return localDate.getEra();
     }

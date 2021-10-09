@@ -16,7 +16,7 @@ public class TimeSpan implements Serializable {
     }
 
     public boolean contains(DateTime dateTime) {
-        return dateTime.isBetween(from, to);
+        return DateTime.isBetween(from, to);
     }
 
     public Duration toDuration() {

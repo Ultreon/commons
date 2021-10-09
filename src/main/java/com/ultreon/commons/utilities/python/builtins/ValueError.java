@@ -1,6 +1,7 @@
 package com.ultreon.commons.utilities.python.builtins;
 
-public class ValueError extends RuntimeException {
+@Deprecated
+public class ValueError extends Error {
     public ValueError() {
     }
 

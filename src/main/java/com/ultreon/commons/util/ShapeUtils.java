@@ -3,6 +3,7 @@ package com.ultreon.commons.util;
 import java.awt.*;
 import java.awt.geom.Area;
 
+@SuppressWarnings("unused")
 public class ShapeUtils {
     public static boolean checkIntersection(Shape shapeA, Shape shapeB) {
         Area areaA = new Area(shapeA);

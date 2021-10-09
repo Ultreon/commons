@@ -5,7 +5,9 @@ import com.ultreon.commons.utilities.python.OS;
 import java.nio.file.Paths;
 import java.util.*;
 
+@Deprecated
 public final class Path {
+    @Deprecated
     private static final int STRING_BUILDER_SIZE = 256;
 
     // Performance testing notes (JDK 1.4, Jul03, scolebourne)
@@ -29,6 +31,7 @@ public final class Path {
      *
      * @since 3.2
      */
+    @Deprecated
     public static final String SPACE = " ";
 
     /**
@@ -36,6 +39,7 @@ public final class Path {
      *
      * @since 2.0
      */
+    @Deprecated
     public static final String EMPTY = "";
 
     /**
@@ -45,6 +49,7 @@ public final class Path {
      * for Character and String Literals</a>
      * @since 3.2
      */
+    @Deprecated
     public static final String LF = "\n";
 
     /**
@@ -54,6 +59,7 @@ public final class Path {
      * for Character and String Literals</a>
      * @since 3.2
      */
+    @Deprecated
     public static final String CR = "\r";
 
     /**
@@ -61,13 +67,16 @@ public final class Path {
      *
      * @since 2.1
      */
+    @Deprecated
     public static final int INDEX_NOT_FOUND = -1;
 
     /**
      * <p>The maximum size to which the padding constant(s) can expand.</p>
      */
+    @Deprecated
     private static final int PAD_LIMIT = 8192;
 
+    @Deprecated
     public static String join(String path, String... paths) {
         String sep = OS.getSep();
 
@@ -102,6 +111,7 @@ public final class Path {
      * @return the joined String, {@code null} if null array input
      * @since 3.2
      */
+    @Deprecated
     public static String join(final byte[] array, final char separator) {
         if (array == null) {
             return null;
@@ -136,6 +146,7 @@ public final class Path {
      * @return the joined String, {@code null} if null array input
      * @since 3.2
      */
+    @Deprecated
     public static String join(final byte[] array, final char separator, final int startIndex, final int endIndex) {
         if (array == null) {
             return null;
@@ -176,6 +187,7 @@ public final class Path {
      * @return the joined String, {@code null} if null array input
      * @since 3.2
      */
+    @Deprecated
     public static String join(final char[] array, final char separator) {
         if (array == null) {
             return null;
@@ -210,6 +222,7 @@ public final class Path {
      * @return the joined String, {@code null} if null array input
      * @since 3.2
      */
+    @Deprecated
     public static String join(final char[] array, final char separator, final int startIndex, final int endIndex) {
         if (array == null) {
             return null;
@@ -250,6 +263,7 @@ public final class Path {
      * @return the joined String, {@code null} if null array input
      * @since 3.2
      */
+    @Deprecated
     public static String join(final double[] array, final char separator) {
         if (array == null) {
             return null;
@@ -284,6 +298,7 @@ public final class Path {
      * @return the joined String, {@code null} if null array input
      * @since 3.2
      */
+    @Deprecated
     public static String join(final double[] array, final char separator, final int startIndex, final int endIndex) {
         if (array == null) {
             return null;
@@ -324,6 +339,7 @@ public final class Path {
      * @return the joined String, {@code null} if null array input
      * @since 3.2
      */
+    @Deprecated
     public static String join(final float[] array, final char separator) {
         if (array == null) {
             return null;
@@ -358,6 +374,7 @@ public final class Path {
      * @return the joined String, {@code null} if null array input
      * @since 3.2
      */
+    @Deprecated
     public static String join(final float[] array, final char separator, final int startIndex, final int endIndex) {
         if (array == null) {
             return null;
@@ -398,6 +415,7 @@ public final class Path {
      * @return the joined String, {@code null} if null array input
      * @since 3.2
      */
+    @Deprecated
     public static String join(final int[] array, final char separator) {
         if (array == null) {
             return null;
@@ -432,6 +450,7 @@ public final class Path {
      * @return the joined String, {@code null} if null array input
      * @since 3.2
      */
+    @Deprecated
     public static String join(final int[] array, final char separator, final int startIndex, final int endIndex) {
         if (array == null) {
             return null;
@@ -463,6 +482,7 @@ public final class Path {
      * @return the joined String, {@code null} if null iterator input
      * @since 2.3
      */
+    @Deprecated
     public static String join(final Iterable<?> iterable, final char separator) {
         if (iterable == null) {
             return null;
@@ -484,6 +504,7 @@ public final class Path {
      * @return the joined String, {@code null} if null iterator input
      * @since 2.3
      */
+    @Deprecated
     public static String join(final Iterable<?> iterable, final String separator) {
         if (iterable == null) {
             return null;
@@ -505,6 +526,7 @@ public final class Path {
      * @return the joined String, {@code null} if null iterator input
      * @since 2.0
      */
+    @Deprecated
     public static String join(final Iterator<?> iterator, final char separator) {
 
         // handle null, zero and one elements before building a buffer
@@ -549,6 +571,7 @@ public final class Path {
      * @param separator the separator character to use, null treated as ""
      * @return the joined String, {@code null} if null iterator input
      */
+    @Deprecated
     public static String join(final Iterator<?> iterator, final String separator) {
 
         // handle null, zero and one elements before building a buffer
@@ -607,6 +630,7 @@ public final class Path {
      * @return the joined String, {@code null} if null list input
      * @since 3.8
      */
+    @Deprecated
     public static String join(final List<?> list, final char separator, final int startIndex, final int endIndex) {
         if (list == null) {
             return null;
@@ -645,6 +669,7 @@ public final class Path {
      * @return the joined String, {@code null} if null list input
      * @since 3.8
      */
+    @Deprecated
     public static String join(final List<?> list, final String separator, final int startIndex, final int endIndex) {
         if (list == null) {
             return null;
@@ -681,6 +706,7 @@ public final class Path {
      * @return the joined String, {@code null} if null array input
      * @since 3.2
      */
+    @Deprecated
     public static String join(final long[] array, final char separator) {
         if (array == null) {
             return null;
@@ -715,6 +741,7 @@ public final class Path {
      * @return the joined String, {@code null} if null array input
      * @since 3.2
      */
+    @Deprecated
     public static String join(final long[] array, final char separator, final int startIndex, final int endIndex) {
         if (array == null) {
             return null;
@@ -754,6 +781,7 @@ public final class Path {
      * @return the joined String, {@code null} if null array input
      * @since 2.0
      */
+    @Deprecated
     public static String join(final Object[] array, final char separator) {
         if (array == null) {
             return null;
@@ -787,6 +815,7 @@ public final class Path {
      * @return the joined String, {@code null} if null array input
      * @since 2.0
      */
+    @Deprecated
     public static String join(final Object[] array, final char separator, final int startIndex, final int endIndex) {
         if (array == null) {
             return null;
@@ -831,6 +860,7 @@ public final class Path {
      * @param separator the separator character to use, null treated as ""
      * @return the joined String, {@code null} if null array input
      */
+    @Deprecated
     public static String join(final Object[] array, final String separator) {
         if (array == null) {
             return null;
@@ -873,6 +903,7 @@ public final class Path {
      *                                        {@code endIndex < 0} or <br>
      *                                        {@code endIndex > array.length()}
      */
+    @Deprecated
     public static String join(final Object[] array, String separator, final int startIndex, final int endIndex) {
         if (array == null) {
             return null;

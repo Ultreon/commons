@@ -66,7 +66,10 @@ package com.ultreon.commons.map;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.io.*;
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
 import java.util.*;
 
 /**
@@ -80,9 +83,10 @@ import java.util.*;
  * This class is not thread safe. When a thread safe implementation is required, use {@link
  * Collections#synchronizedMap(Map)} as it is documented, or use explicit synchronization controls.
  *
- * @author <a href="mailto:mas@apache.org">Michael A. Smith </a>
- * @author <a href="mailto:dlr@collab.net">Daniel Rall </a>
- * @author <a href="mailto:hps@intermeta.de">Henning P. Schmiedehausen </a>
+ * @author <a href="mailto:mas@apache.org">Michael A. Smith</a>
+ * @author <a href="mailto:dlr@collab.net">Daniel Rall</a>
+ * @author <a href="mailto:hps@intermeta.de">Henning P. Schmiedehausen</a>
+ * @author <a href="mailto:qboiwastaken@gmail.com">Qboi123</a>
  * @since 2.0
  */
 @SuppressWarnings({"unused", "JavaDoc"})
@@ -98,7 +102,6 @@ public class SequencedHashMap<K, V> implements Map<K, V>, Cloneable, Externaliza
 
     // add a serial version uid, so that if we change things in the future
     // without changing the format, we can still deserialize properly.
-    @Serial
     private static final long serialVersionUID = 3380552487888102930L;
 
     /**
@@ -496,7 +499,6 @@ public class SequencedHashMap<K, V> implements Map<K, V>, Cloneable, Externaliza
     /**
      * Implements {@link Map#keySet()}.
      */
-    @SuppressWarnings("Convert2Diamond")
     public @NotNull Set<K> keySet() {
         return new AbstractSet<K>() {
             // required impls
@@ -532,7 +534,6 @@ public class SequencedHashMap<K, V> implements Map<K, V>, Cloneable, Externaliza
     /**
      * Implements {@link Map#values()}.
      */
-    @SuppressWarnings("Convert2Diamond")
     public @NotNull Collection<V> values() {
         return new AbstractCollection<V>() {
             // required impl
@@ -586,7 +587,6 @@ public class SequencedHashMap<K, V> implements Map<K, V>, Cloneable, Externaliza
      *
      * @return
      */
-    @SuppressWarnings("Convert2Diamond")
     public @NotNull Set<Map.Entry<K, V>> entrySet() {
         return new AbstractSet<Map.Entry<K, V>>() {
             // helper
@@ -966,12 +966,16 @@ public class SequencedHashMap<K, V> implements Map<K, V>, Cloneable, Externaliza
             returnType = returnType & ~REMOVED_MASK;
             pos = pos.next;
             // should never happen
-            return switch (returnType) {
-                case KEY -> (T) pos.getKey();
-                case VALUE -> (T) pos.getValue();
-                case ENTRY -> (T) pos;
-                default -> throw new Error("bad iterator type: " + returnType);
-            };
+            switch (returnType) {
+                case KEY:
+                    return (T) pos.getKey();
+                case VALUE:
+                    return (T) pos.getValue();
+                case ENTRY:
+                    return (T) pos;
+                default:
+                    throw new Error("bad iterator type: " + returnType);
+            }
         }
 
         /**

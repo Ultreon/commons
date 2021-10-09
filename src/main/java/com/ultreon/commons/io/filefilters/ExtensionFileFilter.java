@@ -6,17 +6,19 @@ import java.io.FileFilter;
 public class ExtensionFileFilter implements FileFilter {
     private String extension;
 
+    /**
+     * File filtering with extension.
+     *
+     * @param extension the extension to filter files with. NOTE: This doesn't need to start with a dot. A dot will automatically be added when filtering/
+     */
     public ExtensionFileFilter(String extension) {
-        if (!extension.startsWith(".")) {
-            throw new IllegalArgumentException("Extension don't starts with a dot.");
-        }
         this.extension = extension;
     }
 
     @Override
-    public boolean accept(File pathname) {
-        if (pathname.isFile()) {
-            return pathname.getName().endsWith(extension);
+    public boolean accept(File file) {
+        if (file.isFile()) {
+            return file.getName().endsWith("." + extension);
         }
         return false;
     }

@@ -1,5 +1,7 @@
 package com.ultreon.commons.util;
 
+import com.ultreon.commons.exceptions.IllegalCallerException;
+
 public class ClassUtils {
     public static String getCallerClassName() {
         StackTraceElement[] stElements = Thread.currentThread().getStackTrace();

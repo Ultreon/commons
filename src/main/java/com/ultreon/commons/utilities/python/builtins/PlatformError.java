@@ -1,5 +1,6 @@
 package com.ultreon.commons.utilities.python.builtins;
 
+@Deprecated
 public class PlatformError extends RuntimeException {
     public PlatformError() {
     }
@@ -14,9 +15,5 @@ public class PlatformError extends RuntimeException {
 
     public PlatformError(Throwable cause) {
         super(cause);
-    }
-
-    public PlatformError(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
     }
 }
