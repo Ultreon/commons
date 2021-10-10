@@ -1,4 +1,4 @@
-package com.ultreon.commons.utilities.system;
+package com.ultreon.commons.os;
 
 public enum OperatingSystem {
     WINDOWS("Windows"),

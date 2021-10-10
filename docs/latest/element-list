@@ -6,6 +6,7 @@ com.ultreon.commons.function.primitive
 com.ultreon.commons.io.filefilters
 com.ultreon.commons.lang
 com.ultreon.commons.map
+com.ultreon.commons.os
 com.ultreon.commons.time
 com.ultreon.commons.util
 com.ultreon.commons.utilities.python
@@ -13,4 +14,3 @@ com.ultreon.commons.utilities.python.builtins
 com.ultreon.commons.utilities.python.os
 com.ultreon.commons.utilities.system
 com.ultreon.commons.utilities.web
-com.ultreon.commons.utilities.web.deprecated
