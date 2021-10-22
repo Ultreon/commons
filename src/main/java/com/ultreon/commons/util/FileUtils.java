@@ -28,4 +28,13 @@ public class FileUtils {
 
         return output;
     }
+
+    public static String getExtension(File file) {
+        String[] split = file.getName().split("\\.", 2);
+        if (split.length <= 1) {
+            return null;
+        }
+
+        return "." + split[1];
+    }
 }
