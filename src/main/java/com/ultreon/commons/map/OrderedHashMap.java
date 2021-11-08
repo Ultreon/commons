@@ -90,7 +90,7 @@ import java.util.*;
  * @since 2.0
  */
 @SuppressWarnings({"unused", "JavaDoc"})
-public class SequencedHashMap<K, V> implements Map<K, V>, Cloneable, Externalizable {
+public class OrderedHashMap<K, V> implements Map<K, V>, Cloneable, Externalizable {
     // constants to define what the iterator should return on "next"
     private static final int KEY = 0;
 
@@ -124,7 +124,7 @@ public class SequencedHashMap<K, V> implements Map<K, V>, Cloneable, Externaliza
     /**
      * Construct a new sequenced hash map with default initial size and load factor.
      */
-    public SequencedHashMap() {
+    public OrderedHashMap() {
         sentinel = createSentinel();
         entries = new HashMap<>();
     }
@@ -135,7 +135,7 @@ public class SequencedHashMap<K, V> implements Map<K, V>, Cloneable, Externaliza
      * @param initialSize the initial size for the hash table
      * @see HashMap#HashMap(int)
      */
-    public SequencedHashMap(int initialSize) {
+    public OrderedHashMap(int initialSize) {
         sentinel = createSentinel();
         entries = new HashMap<>(initialSize);
     }
@@ -147,7 +147,7 @@ public class SequencedHashMap<K, V> implements Map<K, V>, Cloneable, Externaliza
      * @param loadFactor  the load factor for the hash table.
      * @see HashMap#HashMap(int, float)
      */
-    public SequencedHashMap(int initialSize, float loadFactor) {
+    public OrderedHashMap(int initialSize, float loadFactor) {
         sentinel = createSentinel();
         entries = new HashMap<>(initialSize, loadFactor);
     }
@@ -156,7 +156,7 @@ public class SequencedHashMap<K, V> implements Map<K, V>, Cloneable, Externaliza
      * Construct a new sequenced hash map and add all the elements in the specified map. The order in which the mappings
      * in the specified map are added is defined by {@link #putAll(Map)}.
      */
-    public SequencedHashMap(Map<K, V> m) {
+    public OrderedHashMap(Map<K, V> m) {
         this();
         putAll(m);
     }
@@ -508,25 +508,25 @@ public class SequencedHashMap<K, V> implements Map<K, V>, Cloneable, Externaliza
 
             @SuppressWarnings("unchecked")
             public boolean remove(Object o) {
-                Entry<K, V> e = SequencedHashMap.this.removeImpl((K) o);
+                Entry<K, V> e = OrderedHashMap.this.removeImpl((K) o);
                 return (e != null);
             }
 
             // more efficient impls than abstract set
             public void clear() {
-                SequencedHashMap.this.clear();
+                OrderedHashMap.this.clear();
             }
 
             public int size() {
-                return SequencedHashMap.this.size();
+                return OrderedHashMap.this.size();
             }
 
             public boolean isEmpty() {
-                return SequencedHashMap.this.isEmpty();
+                return OrderedHashMap.this.isEmpty();
             }
 
             public boolean contains(Object o) {
-                return SequencedHashMap.this.containsKey(o);
+                return OrderedHashMap.this.containsKey(o);
             }
         };
     }
@@ -548,14 +548,14 @@ public class SequencedHashMap<K, V> implements Map<K, V>, Cloneable, Externaliza
                 if (value == null) {
                     for (Entry<K, V> pos = sentinel.next; pos != sentinel; pos = pos.next) {
                         if (pos.getValue() == null) {
-                            SequencedHashMap.this.removeImpl(pos.getKey());
+                            OrderedHashMap.this.removeImpl(pos.getKey());
                             return true;
                         }
                     }
                 } else {
                     for (Entry<K, V> pos = sentinel.next; pos != sentinel; pos = pos.next) {
                         if (value.equals(pos.getValue())) {
-                            SequencedHashMap.this.removeImpl(pos.getKey());
+                            OrderedHashMap.this.removeImpl(pos.getKey());
                             return true;
                         }
                     }
@@ -565,19 +565,19 @@ public class SequencedHashMap<K, V> implements Map<K, V>, Cloneable, Externaliza
 
             // more efficient impls than abstract collection
             public void clear() {
-                SequencedHashMap.this.clear();
+                OrderedHashMap.this.clear();
             }
 
             public int size() {
-                return SequencedHashMap.this.size();
+                return OrderedHashMap.this.size();
             }
 
             public boolean isEmpty() {
-                return SequencedHashMap.this.isEmpty();
+                return OrderedHashMap.this.isEmpty();
             }
 
             public boolean contains(Object o) {
-                return SequencedHashMap.this.containsValue(o);
+                return OrderedHashMap.this.containsValue(o);
             }
         };
     }
@@ -618,20 +618,20 @@ public class SequencedHashMap<K, V> implements Map<K, V>, Cloneable, Externaliza
                 if (e == null) {
                     return false;
                 }
-                return SequencedHashMap.this.removeImpl(e.getKey()) != null;
+                return OrderedHashMap.this.removeImpl(e.getKey()) != null;
             }
 
             // more efficient impls than abstract collection
             public void clear() {
-                SequencedHashMap.this.clear();
+                OrderedHashMap.this.clear();
             }
 
             public int size() {
-                return SequencedHashMap.this.size();
+                return OrderedHashMap.this.size();
             }
 
             public boolean isEmpty() {
-                return SequencedHashMap.this.isEmpty();
+                return OrderedHashMap.this.isEmpty();
             }
 
             @SuppressWarnings("unchecked")
@@ -657,12 +657,12 @@ public class SequencedHashMap<K, V> implements Map<K, V>, Cloneable, Externaliza
      * @throws CloneNotSupportedException if clone is not supported by a subclass.
      */
     @SuppressWarnings("unchecked")
-    public SequencedHashMap<K, V> clone() throws CloneNotSupportedException {
+    public OrderedHashMap<K, V> clone() throws CloneNotSupportedException {
         // yes, calling super.clone() silly since we're just blowing away all
         // the stuff that super might be doing anyway, but for motivations on
         // this, see:
         // http://www.javaworld.com/javaworld/jw-01-1999/jw-01-object.html
-        SequencedHashMap<K, V> map = (SequencedHashMap<K, V>) super.clone();
+        OrderedHashMap<K, V> map = (OrderedHashMap<K, V>) super.clone();
 
         // create new, empty sentinel
         map.sentinel = createSentinel();
@@ -992,7 +992,7 @@ public class SequencedHashMap<K, V> implements Map<K, V>, Cloneable, Externaliza
             if (modCount != expectedModCount) {
                 throw new ConcurrentModificationException();
             }
-            SequencedHashMap.this.removeImpl(pos.getKey());
+            OrderedHashMap.this.removeImpl(pos.getKey());
 
             // tick the expected mod count for the remove operation
             expectedModCount++;
