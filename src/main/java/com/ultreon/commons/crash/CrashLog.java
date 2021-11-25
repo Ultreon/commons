@@ -30,16 +30,11 @@ public final class CrashLog extends CrashCategory {
     public CrashLog(String details, @Nullable CrashLog report, Throwable t) {
         this(details, t);
 
-        if (t instanceof ApplicationCrash) this.throwable = addCrash((ApplicationCrash) t).throwable;
         if (report != null) addCrashLog(report);
     }
 
     public CrashLog(String details, Throwable t) {
         super(details, t);
-
-        if (t instanceof ApplicationCrash) {
-            this.throwable = addCrash((ApplicationCrash) t).throwable;
-        }
     }
 
     private CrashLog addCrashLog(CrashLog log) {

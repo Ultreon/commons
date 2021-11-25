@@ -2,35 +2,15 @@ package com.ultreon.commons.crash;
 
 import com.ultreon.commons.util.StringUtils;
 
-import java.io.PrintStream;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class ApplicationCrash extends RuntimeException {
+public final class ApplicationCrash {
     private static final List<Runnable> crashHandlers = new ArrayList<>();
     private final CrashLog crashLog;
 
     ApplicationCrash(CrashLog crashLog) {
         this.crashLog = crashLog;
-    }
-
-    @Override
-    public void printStackTrace() {
-        printCrash();
-        crash();
-    }
-
-    @Override
-    public void printStackTrace(PrintWriter err) {
-        printCrash();
-        crash();
-    }
-
-    @Override
-    public void printStackTrace(PrintStream err) {
-        printCrash();
-        crash();
     }
 
     public void printCrash() {
