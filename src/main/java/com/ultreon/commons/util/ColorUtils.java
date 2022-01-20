@@ -4,50 +4,62 @@ import com.ultreon.commons.exceptions.InvalidValueException;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
-public class ColorUtils {
+public final class ColorUtils {
     /**************************************************************************
      * Converts a color hex code (e.g. "#FFFFFF ) to a color instance.
      *
-     * @param colorStr e.g. "#FFFFFF" or with alpha "#FFFFFF00"
+     * @param hex e.g. "#FFFFFF" or with alpha "#FFFFFF00"
+     * @return a new Color instance based on the color hex code
+     * @see Color
+     * @see #unpackHex(String)
+     * @deprecated use {@link #unpackHex(String)} instead.
+     */
+    @Deprecated
+    public static Color hex2Rgb(String hex) {
+        return unpackHex(hex);
+    }
+
+    /**************************************************************************
+     * Converts a color hex code (e.g. "#FFFFFF ) to a color instance.
+     *
+     * @param hex e.g. "#FFFFFF" or with alpha "#FFFFFF00"
      * @return a new Color instance based on the color hex code
      * @see Color
      */
-    public static Color hex2Rgb(String colorStr) {
-//        BubbleBlaster.getLogger().debug("" + colorStr.length());
-
-        if (colorStr.length() > 9)
-            throw new InvalidValueException("Too large color hex code, must be a length of 7 or 9, got: " + colorStr.length());
-        if (colorStr.length() == 9) {
-            testColorHex(colorStr);
-
-            return new Color(
-                    Integer.valueOf(colorStr.substring(1, 3), 16),
-                    Integer.valueOf(colorStr.substring(3, 5), 16),
-                    Integer.valueOf(colorStr.substring(5, 7), 16),
-                    Integer.valueOf(colorStr.substring(7, 9), 16));
-        }
-
-        if (colorStr.length() == 8)
-            throw new InvalidValueException("Too large or small color hex code, must be a length of 7 or 9, got: " + colorStr.length());
-        if (colorStr.length() < 7)
-            throw new InvalidValueException("Too small color hex code, must be a length of 7 or 9, got: " + colorStr.length());
-        testColorHex(colorStr);
-
-        return new Color(
-                Integer.valueOf(colorStr.substring(1, 3), 16),
-                Integer.valueOf(colorStr.substring(3, 5), 16),
-                Integer.valueOf(colorStr.substring(5, 7), 16));
-    }
-
-    private static void testColorHex(String colorStr) {
-        if (colorStr.charAt(0) != '#') throw new InvalidValueException("Invalid color hex code, must start with '#'");
-        char[] chars = colorStr.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            char c = chars[i];
-            //noinspection SpellCheckingInspection
-            if (i > 0 && !"0123456789abcdefABCDEF".contains(String.valueOf(c)))
-                throw new InvalidValueException("Invalid color hex code, text after '#' must be hexadecimals");
+    public static Color unpackHex(String hex) {
+        if (Pattern.matches("#[0-9a-fA-F]{6}", hex)) {
+            int rgb = Integer.valueOf(hex.substring(1), 16);
+            return new Color(rgb, false);
+        } else if (Pattern.matches("#[0-9a-fA-F]{8}", hex)) {
+            int rgb = Integer.valueOf(hex.substring(1), 16);
+            return new Color(rgb, true);
+        } else if (Pattern.matches("#[0-9a-fA-F]{3}", hex)) {
+            int rgb = Integer.valueOf(new String(new char[]{
+                    hex.charAt(1), hex.charAt(1),
+                    hex.charAt(2), hex.charAt(2),
+                    hex.charAt(3), hex.charAt(3)}), 16);
+            return new Color(rgb, false);
+        } else if (Pattern.matches("#[0-9a-fA-F]{4}", hex)) {
+            int rgb = Integer.valueOf(new String(new char[]{
+                    hex.charAt(1), hex.charAt(1),
+                    hex.charAt(2), hex.charAt(2),
+                    hex.charAt(3), hex.charAt(3),
+                    hex.charAt(4), hex.charAt(4)}), 16);
+            return new Color(rgb, true);
+        } else {
+            if (hex.length() >= 1) {
+                if (hex.charAt(0) != '#') {
+                    throw new InvalidValueException("First character of color code isn't '#'.");
+                } else if (hex.length() != 3 && hex.length() != 4 && hex.length() != 6 && hex.length() != 8) {
+                    throw new InvalidValueException("Invalid hex length, should be 3, 4, 6 or 8 in length.");
+                } else {
+                    throw new InvalidValueException("Invalid hex value. Hex values may only contain numbers and letters a to f.");
+                }
+            } else {
+                throw new InvalidValueException("The color hex is empty, it should start with a hex, and then 3, 4, 6 or 8 hexadecimal digits.");
+            }
         }
     }
 
@@ -55,7 +67,7 @@ public class ColorUtils {
         ArrayList<Color> colors = new ArrayList<>();
 
         for (String colorStr : colorStrings) {
-            colors.add(hex2Rgb(colorStr));
+            colors.add(unpackHex(colorStr));
         }
 
         return colors.toArray(new Color[]{});
