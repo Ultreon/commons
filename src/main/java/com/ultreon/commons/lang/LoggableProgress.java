@@ -5,19 +5,23 @@ package com.ultreon.commons.lang;
  * @since 1.0.0
  */
 public class LoggableProgress extends Progress {
-    private final InfoTransporter infoTransporter;
+    private final MessageBridge messageBridge;
 
-    public LoggableProgress(InfoTransporter infoTransporter, int progress, int max) {
+    public LoggableProgress(MessageBridge messageBridge, int progress, int max) {
         super(progress, max);
-        this.infoTransporter = infoTransporter;
+        this.messageBridge = messageBridge;
     }
 
-    public LoggableProgress(InfoTransporter infoTransporter, int max) {
+    public LoggableProgress(MessageBridge messageBridge, int max) {
         super(max);
-        this.infoTransporter = infoTransporter;
+        this.messageBridge = messageBridge;
     }
 
     public void log(String text) {
-        infoTransporter.log(text);
+        messageBridge.message(text);
+    }
+
+    public void logIncrement(String text) {
+        messageBridge.message(text);
     }
 }
