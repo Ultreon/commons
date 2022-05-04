@@ -77,8 +77,6 @@ public final class CrashLog extends CrashCategory {
         crashLog.entries.addAll(entries);
 
         Runtime runtime = Runtime.getRuntime();
-        SystemInfo systemInfo = new SystemInfo();
-        HardwareAbstractionLayer hardwareAbstractionLayer = systemInfo.getHardware();
 
         CrashCategory category = new CrashCategory("System Details");
         category.add("OS", System.getProperty("os.name") + " " + System.getProperty("os.version"));
