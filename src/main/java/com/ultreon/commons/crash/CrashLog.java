@@ -2,8 +2,6 @@ package com.ultreon.commons.crash;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import oshi.SystemInfo;
-import oshi.hardware.HardwareAbstractionLayer;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.io.*;
@@ -97,8 +95,6 @@ public final class CrashLog extends CrashCategory {
         StringBuilder sb = new StringBuilder();
 
         Runtime runtime = Runtime.getRuntime();
-        SystemInfo systemInfo = new SystemInfo();
-        HardwareAbstractionLayer hardwareAbstractionLayer = systemInfo.getHardware();
 
         if (entries.size() > 0) {
             sb.append("Details:").append(System.lineSeparator());
