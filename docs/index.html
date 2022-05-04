@@ -2,26 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>index.html</title>
+    <title>Versions for Javadocs</title>
     <style>
         a {
-            padding: 6px 12px;
+            padding: 12px 24px;
             border-radius: 4px;
-            background-color: #39f;
+            background-color: #09e;
             color: white;
             text-decoration: none;
-            font-family: sans-serif, Arial, "Droid Sans";
-            transition: 0.1s ease-in-out;
+            transition: 0.1s ease-in-out background-color,color;
+            margin: 4px;
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            flex-wrap: wrap;
+            background-color: #222
         }
 
         a:hover {
             background-color: #05b;
-            color: #bbb;
+            color: #999;
             text-decoration: none;
+        }
+        a:focus {
+            outline: 4px solid #05b7;
+        }
+        * {
+            font-family: sans-serif, Arial, "Droid Sans";
         }
     </style>
 </head>
 <body>
 <a href="latest/index.html">Latest Javadoc</a>
+<a href="1.0.190-a1/index.html">1.0.190 Alpha 1</a>
 </body>
 </html>
