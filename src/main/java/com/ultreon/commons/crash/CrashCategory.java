@@ -50,8 +50,6 @@ public class CrashCategory {
         StringBuilder sb = new StringBuilder();
         sb.append(details).append(": \r\n");
 
-        System.out.println(entries);
-
         if (entries.size() > 0) {
             ArrayList<AbstractMap.SimpleEntry<String, String>> simpleEntries = new ArrayList<>(entries);
             for (int i = 0; i < simpleEntries.size() - 1; i++) {
