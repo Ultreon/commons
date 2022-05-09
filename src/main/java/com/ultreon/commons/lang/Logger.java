@@ -1,5 +1,5 @@
 package com.ultreon.commons.lang;
 
-public interface ILogger {
+public interface Logger {
     void log(String message);
 }

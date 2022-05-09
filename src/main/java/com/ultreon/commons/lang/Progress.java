@@ -1,6 +1,6 @@
 package com.ultreon.commons.lang;
 
-import org.jetbrains.annotations.NotNull;
+import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -72,7 +72,7 @@ public class Progress implements Cloneable, Comparable<Progress>, Serializable {
     }
 
     @Override
-    public int compareTo(@NotNull Progress o) {
+    public int compareTo(@NonNull Progress o) {
         return 0;
     }
 

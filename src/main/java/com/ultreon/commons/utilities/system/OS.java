@@ -1,6 +1,6 @@
 package com.ultreon.commons.utilities.system;
 
-import org.jetbrains.annotations.NotNull;
+import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.Objects;
 
@@ -52,12 +52,12 @@ public class OS {
         return Objects.hash(name, version);
     }
 
-    @NotNull
+    @NonNull
     public String getVersion() {
         return version;
     }
 
-    @NotNull
+    @NonNull
     public String getName() {
         return name;
     }

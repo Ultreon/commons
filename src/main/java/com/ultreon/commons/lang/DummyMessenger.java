@@ -2,11 +2,11 @@ package com.ultreon.commons.lang;
 
 /**
  * @author Qboi
- * @see MessageBridge
+ * @see Messenger
  * @since 1.0.0
  */
-public class DummyMessageBridge extends MessageBridge {
-    public DummyMessageBridge() {
+public class DummyMessenger extends Messenger {
+    public DummyMessenger() {
         super((s) -> {
         });
     }

@@ -6,7 +6,7 @@ import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
 import com.ultreon.commons.exceptions.IllegalJsonElementInArray;
 import com.ultreon.commons.exceptions.UnsafeOperationException;
-import org.jetbrains.annotations.NotNull;
+import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -56,69 +56,6 @@ public class GoogleSearch implements Iterable<GoogleResult>, Serializable {
         this.startIndex = startIndex;
     }
 
-//    public GoogleResults getResults() {
-//        GoogleResults results = new GoogleResults(this);
-//        URL url;
-//        try {
-//            url = new URL("https://www.googleapis.com/customsearch/v1?key=" + API_KEY + "&num=" + count + "&start=" + startIndex + "&safe=" + (safeSearch ? "on" : "off") + "&cx=" + SEARCH_ENGINE_ID + "&q=" + URLEncoder.encode(query, "UTF-8"));
-//        } catch (MalformedURLException e) {
-//            e.printStackTrace();
-//            results.setInvalid(e);
-//            return results;
-//        }
-//
-//        if (!cache.containsKey(url)) {
-//            InputStreamReader reader;
-//            try {
-//                reader = new InputStreamReader(url.openStream(), StandardCharsets.UTF_8);
-//                Files.readAllBytes()
-//                System.out.println(new String(url.openStream().readAllBytes()));
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//                results.setInvalid(e);
-//                return results;
-//            }
-//
-//            JsonObject object;
-//            try {
-//                object = new Gson().fromJson(reader, JsonObject.class);
-//            } catch (JsonIOException e) {
-//                results.setInvalid(e);
-//                return results;
-//            }
-//
-//            results.setJsonObject(object);
-//
-//            int i = 0;
-//            for (JsonElement item : object.getAsJsonArray("items")) {
-//                if (item instanceof JsonObject) {
-//                    JsonObject resultObject = (JsonObject) item;
-//                    results.add(new GoogleResult(resultObject));
-//                } else {
-//                    results.setInvalid(new IllegalJsonElementInArray("ItemType at index " + i + " is not a JsonObject.", i, item));
-//                    return results;
-//                }
-//                i++;
-//            }
-//
-//            cache.put(url, results);
-//
-//            return results;
-//        } else {
-//            try {
-//                url = new URL("https://www.googleapis.com/customsearch/v1?key=" + API_KEY + "&num=" + count + "&start=" + startIndex + "&safe=" + (safeSearch ? "on" : "off") + "&cx=" + SEARCH_ENGINE_ID + "&q=" + URLEncoder.encode(query, StandardCharsets.UTF_8));
-//            } catch (MalformedURLException e) {
-//                e.printStackTrace();
-//
-//                results = new GoogleResults(this);
-//                results.setInvalid(e);
-//                return results;
-//            }
-//            return cache.get(url);
-//        }
-//    }
-
     public void clearCache() {
         this.cache.clear();
     }
@@ -162,7 +99,7 @@ public class GoogleSearch implements Iterable<GoogleResult>, Serializable {
 //     * @return the google result iterator.
 //     */
 //    @SuppressWarnings("Convert2Diamond")
-//    @NotNull
+//    @NonNull
 //    @Override
 //    public Iterator<GoogleResult> iterator() {
 //        GoogleSearch googleSearch = new GoogleSearch(query, 1, 1, safeSearch);
@@ -184,7 +121,7 @@ public class GoogleSearch implements Iterable<GoogleResult>, Serializable {
 //        };
 //    }
 
-    @NotNull
+    @NonNull
     @Override
     public Iterator<GoogleResult> iterator() {
         return null;

@@ -132,6 +132,7 @@ configurations {
 dependencies {
     // Jetbrains Annotations
     api 'org.jetbrains:annotations:22.0.0'
+    api 'org.checkerframework:checker-qual:3.12.0'
 
     // SwingX
     include 'org.swinglabs.swingx:swingx-common:1.6.5-1'
